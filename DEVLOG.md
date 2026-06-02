@@ -180,3 +180,36 @@ Milestone 5 — Cloze Mode (afventer godkendelse)
 
 ## Næste milestone
 Milestone 6 — Boss Battle (afventer godkendelse)
+
+---
+
+## 2026-06-02
+
+## Milestone 6 — Boss Battle
+
+## Implementerede funktioner
+- `BossGenerator` — genererer op til 10 eksamenslignende åbne spørgsmål i 3 typer: begrebsforklaring, sammenligning og sektionsbaserede spørgsmål
+- `BossEvaluator` — automatisk vurdering med 3-vægtet scoring: keyword coverage (60%), svarlængde (20%), sætningskvalitet (20%)
+- `boss.php` — interaktiv Boss Battle-side med mørkt intro-banner, fritekstinput, tegntæller, keyword-badges (grøn/rød), modelsvarsvisning og XP-display
+- `boss_evaluate.php` — AJAX-endpoint til server-side evaluering via BossEvaluator
+- Farvekodet feedback: fremragende (grøn), godt (blå), acceptabelt (gul), svagt (rød)
+- Modelsvar kan vises/skjules efter besvarelse
+- XP-integration via eksisterende `xp_update.php`
+
+## Oprettede filer
+- `src/BossBattle/BossGenerator.php`
+- `src/BossBattle/BossEvaluator.php`
+- `public/boss.php`
+- `public/boss_evaluate.php`
+
+## Ændrede filer
+- Ingen
+
+## Databaseændringer
+- Brug af `boss_battles` (INSERT ved generering, DELETE ved regenerering)
+
+## Kendte problemer
+- Ingen
+
+## Næste milestone
+Milestone 7 — Gamification (afventer godkendelse)
