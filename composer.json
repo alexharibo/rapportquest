@@ -1,0 +1,17 @@
+{
+    "name": "rapportquest/rapportquest",
+    "description": "RapportQuest — PDF rapport til interaktivt læringsforløb",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "smalot/pdfparser": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RapportQuest\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
