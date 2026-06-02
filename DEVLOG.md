@@ -245,3 +245,38 @@ Milestone 7 — Gamification (afventer godkendelse)
 
 ## Næste milestone
 Milestone 8 — Dashboard (afventer godkendelse)
+
+---
+
+## 2026-06-02
+
+## Milestone 8 — Dashboard
+
+## Implementerede funktioner
+- `ExamReadinessCalculator` — beregner Eksamen Klar-score 0-100 med vægtning: Quiz 40%, Cloze 25%, Boss Battle 25%, Aktivitet 10%
+- `dashboard.php` — komplet dashboard med:
+  - Cirkulær Eksamen Klar-score med farvekodet status (grøn/blå/gul/rød)
+  - XP & niveau-kort med progressbar
+  - Score-fordeling tabel med mini-bars
+  - Transparent beregning (klikbart detalje-panel)
+  - Badge-oversigt med links til gamification-side
+  - Aktivitetsstatistik (tælling af genererede spørgsmål)
+  - Rapport-skifter (dropdown)
+  - Genveje til alle 3 læringsaktiviteter
+- Dashboard og Gamification links tilføjet i footer på `index.php`
+
+## Oprettede filer
+- `src/Dashboard/ExamReadinessCalculator.php`
+- `public/dashboard.php`
+
+## Ændrede filer
+- `public/index.php` (footer-links til dashboard og gamification)
+
+## Databaseændringer
+- Ingen nye tabeller
+
+## Kendte problemer
+- Ingen
+
+## Næste milestone
+Milestone 9 — QA og Optimering (afventer godkendelse)

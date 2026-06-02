@@ -80,7 +80,13 @@
         </main>
 
         <footer class="site-footer">
-            <p>&copy; 2026 RapportQuest</p>
+            <p>
+                <a href="dashboard.php" style="color:var(--primary);font-weight:600;text-decoration:none;">📊 Dashboard</a>
+                &nbsp;·&nbsp;
+                <a href="gamification.php" style="color:var(--primary);font-weight:600;text-decoration:none;">🏆 Gamification</a>
+                &nbsp;·&nbsp;
+                &copy; 2026 RapportQuest
+            </p>
         </footer>
     </div>
 
