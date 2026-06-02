@@ -52,6 +52,8 @@
                         <p id="file-name" class="file-name"></p>
                     </div>
 
+                    <progress id="upload-progress" value="0" max="100" class="upload-progress"></progress>
+
                     <button type="submit" class="btn-submit" id="submit-btn">
                         Start læringsforløb
                     </button>

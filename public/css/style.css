@@ -169,6 +169,17 @@ body {
     min-height: 1.25rem;
 }
 
+/* ---- Progress bar ---- */
+.upload-progress {
+    display: none;
+    width: 100%;
+    height: 8px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+    accent-color: var(--primary);
+}
+
 /* ---- Submit button ---- */
 .btn-submit {
     width: 100%;

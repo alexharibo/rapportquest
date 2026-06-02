@@ -42,3 +42,38 @@
 
 ## Næste milestone
 Milestone 2 — PDF Upload (afventer godkendelse)
+
+---
+
+## 2026-06-02
+
+## Milestone 2 — PDF Upload
+
+## Implementerede funktioner
+- `upload.php` — server-side upload handler med komplet validering
+- Filvalidering: MIME-type, magic bytes (`%PDF-`), extension, størrelse (max 20 MB), tom fil
+- Upload-fejlkoder håndteres med brugervenlige beskeder
+- Unik filnavngenerering med `random_bytes()`
+- Databaseintegration: rapport gemmes i `reports`-tabellen med udløbsdato (+30 dage)
+- Atomisk fejlhåndtering: fil slettes hvis DB-insert fejler
+- `analyse.php` — bekræftelsesside efter succesfuld upload
+- `app.js` opdateret: AJAX-upload med XHR, progressbar, timeout-håndtering
+- Progressbar tilføjet til `index.php` og `style.css`
+
+## Oprettede filer
+- `public/upload.php`
+- `public/analyse.php`
+
+## Ændrede filer
+- `public/index.php` (progressbar tilføjet)
+- `public/js/app.js` (AJAX-upload, progressbar, fejlhåndtering)
+- `public/css/style.css` (progressbar styling)
+
+## Databaseændringer
+- Ingen nye tabeller (brug af eksisterende `reports`-tabel fra Milestone 1)
+
+## Kendte problemer
+- Ingen
+
+## Næste milestone
+Milestone 3 — Rapportanalyse og Begrebsdatabase (afventer godkendelse)
