@@ -77,3 +77,40 @@ Milestone 2 — PDF Upload (afventer godkendelse)
 
 ## Næste milestone
 Milestone 3 — Rapportanalyse og Begrebsdatabase (afventer godkendelse)
+
+---
+
+## 2026-06-02
+
+## Milestone 3 — Rapportanalyse og Begrebsdatabase
+
+## Implementerede funktioner
+- `PdfExtractor` — tekst-ekstraktion via smalot/pdfparser med OCR-fallback (Tesseract + ImageMagick)
+- `TextNormalizer` — normalisering, tokenisering, sætningstokenisering, toLower
+- `ChapterDetector` — genkender nummererede overskrifter, ALL-CAPS og kolon-overskrifter; klassificerer 15+ sektionstyper (indledning, metode, konklusion m.fl.)
+- `ConceptMatcher` — whole-word matching mod begrebsdatabasen inkl. synonymer; returnerer fundne sætninger per begreb
+- `RelevanceScorer` — scorer 0-100 via `weight × log(1 + count)` normaliseret til max
+- `ReportAnalyser` — orkestrerer hele pipeline; gemmer sektioner og begreber i DB; sætter report-status
+- `analyse.php` opdateret — viser analyseresultater med stat-kort, top-10 begrebstabel og knapper til Quiz/Cloze/Boss Battle
+- Composer autoload opdateret (PSR-4: `RapportQuest\\`)
+
+## Oprettede filer
+- `src/Analysis/PdfExtractor.php`
+- `src/Analysis/TextNormalizer.php`
+- `src/Analysis/ChapterDetector.php`
+- `src/Analysis/ConceptMatcher.php`
+- `src/Analysis/RelevanceScorer.php`
+- `src/Analysis/ReportAnalyser.php`
+
+## Ændrede filer
+- `public/analyse.php` (fuld analyse-visning)
+
+## Databaseændringer
+- Brug af `report_sections` (INSERT/DELETE ved re-analyse)
+- Upsert på `concepts`-tabellen
+
+## Kendte problemer
+- OCR (Tesseract) ikke tilgængeligt i dette miljø — aktiveres automatisk når `tesseract` er i PATH
+
+## Næste milestone
+Milestone 4 — Quiz Mode (afventer godkendelse)
