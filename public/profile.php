@@ -81,14 +81,12 @@ $xpPct   = $range > 0 ? min(100, (int) round($xpInto / $range * 100)) : 100;
 $earnedTypes    = array_column($earned, 'type');
 $currentAvatar  = $progress['avatar'] ?? $_SESSION['avatar'] ?? '';
 
-// Report stats
-$statsStmt = $pdo->prepare('SELECT COUNT(*) as cnt FROM reports WHERE session_id = :sid');
-$statsStmt->execute([':sid' => $sessionId]);
+// Report stats (reports table has no session_id — count all visible reports)
+$statsStmt   = $pdo->query('SELECT COUNT(*) as cnt FROM reports');
 $reportCount = (int)($statsStmt->fetch()['cnt'] ?? 0);
 
 // Recent reports
-$recentStmt = $pdo->prepare('SELECT original_name, created_at FROM reports WHERE session_id = :sid ORDER BY created_at DESC LIMIT 5');
-$recentStmt->execute([':sid' => $sessionId]);
+$recentStmt    = $pdo->query('SELECT original_name, created_at FROM reports ORDER BY created_at DESC LIMIT 5');
 $recentReports = $recentStmt->fetchAll();
 
 // Daily bonus
