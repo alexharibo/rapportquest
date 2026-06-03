@@ -108,7 +108,7 @@ $reportId = 0;
     <style>
         .profile-layout {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 1.25rem;
             margin-bottom: 1.25rem;
         }
@@ -181,8 +181,8 @@ $reportId = 0;
         /* XP bar */
         .xp-bar-wrap { width: 100%; padding: 0 .1rem; }
         .xp-label { display: flex; justify-content: space-between; font-size: .75rem; color: var(--text-muted); margin-bottom: .4rem; white-space: nowrap; }
-        .xp-bar { height: 12px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
-        .xp-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--neon-blue)); border-radius: 6px; transition: width .6s; min-width: 4px; }
+        .xp-bar { height: 20px; background: rgba(255,255,255,.08); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+        .xp-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--neon-blue)); border-radius: 10px; transition: width .6s; min-width: 4px; }
 
         /* Clickable profile avatar */
         .profile-avatar-btn {
