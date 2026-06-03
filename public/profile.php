@@ -108,7 +108,7 @@ $reportId = 0;
     <style>
         .profile-layout {
             display: grid;
-            grid-template-columns: 260px 1fr 280px;
+            grid-template-columns: 280px 1fr;
             gap: 1.25rem;
             margin-bottom: 1.25rem;
         }
@@ -179,10 +179,10 @@ $reportId = 0;
         .stat-val { font-weight: 700; color: var(--accent); }
 
         /* XP bar */
-        .xp-bar-wrap { width: 100%; }
-        .xp-label { display: flex; justify-content: space-between; font-size: .75rem; color: var(--text-muted); margin-bottom: .35rem; }
-        .xp-bar { height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; }
-        .xp-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--neon-blue)); border-radius: 4px; transition: width .6s; }
+        .xp-bar-wrap { width: 100%; padding: 0 .1rem; }
+        .xp-label { display: flex; justify-content: space-between; font-size: .75rem; color: var(--text-muted); margin-bottom: .4rem; white-space: nowrap; }
+        .xp-bar { height: 12px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+        .xp-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--neon-blue)); border-radius: 6px; transition: width .6s; min-width: 4px; }
 
         /* Clickable profile avatar */
         .profile-avatar-btn {
@@ -394,14 +394,7 @@ $reportId = 0;
             </div>
         </div>
 
-        <!-- 2. Stats placeholder (avatar picker is now a modal) -->
-        <div class="p-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;text-align:center;">
-            <div style="font-size:3rem;">🎭</div>
-            <p style="color:var(--text-muted);font-size:.9rem;">Klik på dit profilbillede for at vælge avatar</p>
-            <button class="btn-unlock" id="openAvatarModal2" style="width:auto;padding:.5rem 1.5rem;">Skift Avatar</button>
-        </div>
-
-        <!-- 3. Right column: Stats + Nav links -->
+        <!-- 2. Right column: Stats + Nav links -->
         <div style="display:flex;flex-direction:column;gap:1.25rem;">
 
             <!-- Rapport statistik -->
@@ -554,7 +547,6 @@ function openModal() { document.getElementById('avatarModalOverlay').classList.a
 function closeModal() { document.getElementById('avatarModalOverlay').classList.remove('open'); }
 
 document.getElementById('openAvatarModal').addEventListener('click', openModal);
-document.getElementById('openAvatarModal2').addEventListener('click', openModal);
 document.getElementById('closeAvatarModal').addEventListener('click', closeModal);
 document.getElementById('avatarModalOverlay').addEventListener('click', e => {
     if (e.target === e.currentTarget) closeModal();
