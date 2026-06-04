@@ -202,7 +202,24 @@ unset($q);
         .next-btn:hover { background: #6d28d9; }
 
         /* Results */
-        .results-card { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; text-align: center; display: none; }
+        .results-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+        .results-bg {
+            position: absolute; inset: 0;
+            background-image: url('https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/Deadline%20herrens%201.png');
+            background-size: cover; background-position: center top;
+            filter: brightness(.3);
+            z-index: 0;
+        }
+        .results-content { position: relative; z-index: 1; }
         .results-score { font-size: 4rem; font-weight: 800; color: #7c3aed; }
         .results-label { color: var(--text-muted); margin-bottom: 1.5rem; }
         .xp-gained { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: .5rem 0; }
@@ -216,12 +233,6 @@ unset($q);
 <body>
 <?php include __DIR__ . '/nav.php'; ?>
 <div class="container">
-    <div class="boss-intro">
-        <div style="font-size:3rem;margin-bottom:.5rem;">⚔️</div>
-        <h2>Boss Battle</h2>
-        <p>Besvar eksamenslignende spørgsmål med dine egne ord</p>
-    </div>
-
     <?php if ($genError): ?>
         <div class="upload-card">
             <div class="message-area error" style="display:block;"><?= htmlspecialchars($genError, ENT_QUOTES) ?></div>
@@ -234,7 +245,7 @@ unset($q);
         </div>
     <?php else: ?>
 
-    <div class="boss-header">
+    <div class="boss-header" id="boss-header">
         <span class="progress-text" id="progress-text">Spørgsmål 1 / <?= count($questions) ?></span>
         <div>
             <div class="xp-bar-wrap">
@@ -282,15 +293,18 @@ unset($q);
 
     <!-- Results -->
     <div class="results-card" id="results-card">
-        <div style="font-size:3rem;margin-bottom:.5rem;">🏆</div>
-        <div class="results-score" id="results-score">0</div>
-        <div class="results-label">point optjent</div>
-        <div class="xp-gained" id="results-xp">+0 XP</div>
-        <p id="results-summary" style="color:var(--text-muted);margin-bottom:1rem;"></p>
-        <div class="action-buttons">
-            <a href="quiz.php?id=<?= $reportId ?>" class="btn-primary">🎯 Quiz Mode</a>
-            <a href="cloze.php?id=<?= $reportId ?>" class="btn-primary">✏️ Cloze Mode</a>
-            <a href="boss.php?id=<?= $reportId ?>" class="btn-secondary">🔄 Prøv igen</a>
+        <div class="results-bg"></div>
+        <div class="results-content">
+            <div style="font-size:3rem;margin-bottom:.5rem;">🏆</div>
+            <div class="results-score" id="results-score">0</div>
+            <div class="results-label">point optjent</div>
+            <div class="xp-gained" id="results-xp">+0 XP</div>
+            <p id="results-summary" style="color:rgba(255,255,255,.7);margin-bottom:1rem;"></p>
+            <div class="action-buttons">
+                <a href="quiz.php?id=<?= $reportId ?>" class="btn-primary">🎯 Quiz Mode</a>
+                <a href="cloze.php?id=<?= $reportId ?>" class="btn-primary">✏️ Cloze Mode</a>
+                <a href="boss.php?id=<?= $reportId ?>" class="btn-secondary">🔄 Prøv igen</a>
+            </div>
         </div>
     </div>
 
@@ -429,6 +443,8 @@ unset($q);
             totalScore + ' ud af ' + maxScore + ' mulige point (' + pct + '%)';
 
         document.getElementById('results-card').style.display = 'block';
+        const hdr = document.getElementById('boss-header');
+        if (hdr) hdr.style.display = 'none';
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
     </script>
