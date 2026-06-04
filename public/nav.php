@@ -40,8 +40,9 @@ $_navUsername = htmlspecialchars($_SESSION['username'] ?? '');
         <?php if ($_navLoggedIn): ?>
         <a href="logout.php" class="nav-link" style="color:var(--text-muted);">Log ud</a>
         <?php else: ?>
-        <a href="login.php"    class="nav-link <?= $currentPage === 'login.php'    ? 'active' : '' ?>">Log ind</a>
-        <a href="register.php" class="nav-link" style="background:var(--primary);color:#fff;border-color:var(--primary);">Opret konto</a>
+        <button class="nav-link" onclick="openAuthModal('login')"    style="cursor:pointer;background:none;border:none;font-family:inherit;font-size:.875rem;color:var(--text-muted);">Log ind</button>
+        <button class="nav-link" onclick="openAuthModal('register')" style="cursor:pointer;background:var(--primary);color:#fff;border:none;font-family:inherit;font-size:.875rem;font-weight:700;">Opret konto</button>
         <?php endif; ?>
     </div>
 </nav>
+<?php require_once __DIR__ . '/auth_modal.php'; ?>

@@ -368,8 +368,8 @@ if ($currentAvatar && preg_match('/^avatar-(\d+)$/', $currentAvatar, $m)) {
         <?php if (!empty($_SESSION['user_id'])): ?>
         <a href="logout.php" class="lp-nav-link">Log ud</a>
         <?php else: ?>
-        <a href="login.php"    class="lp-nav-link">Log ind</a>
-        <a href="register.php" class="lp-nav-cta" style="text-decoration:none;">Opret konto</a>
+        <button class="lp-nav-link" onclick="openAuthModal('login')"    style="cursor:pointer;background:none;border:none;font-family:inherit;">Log ind</button>
+        <button class="lp-nav-cta"  onclick="openAuthModal('register')" style="cursor:pointer;border:none;font-family:inherit;">Opret konto</button>
         <?php endif; ?>
         <button class="lp-nav-cta" id="navUploadBtn">📤 Upload rapport</button>
     </div>
@@ -571,6 +571,7 @@ if ($currentAvatar && preg_match('/^avatar-(\d+)$/', $currentAvatar, $m)) {
     </div>
 </div>
 
+<?php require_once __DIR__ . '/auth_modal.php'; ?>
 <script src="js/app.js"></script>
 <script>
 const overlay = document.getElementById('uploadOverlay');
