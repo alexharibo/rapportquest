@@ -69,18 +69,18 @@ body { padding-top: 76px; }
         <img src="<?= $_LOGO_URL ?>" alt="ExamQuest">
     </a>
     <div class="lp-nav-links">
-        <?php if ($navReportId > 0): ?>
-        <a href="quiz.php?id=<?= $navReportId ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'quiz.php' ? 'active' : '' ?>">🎯 Quiz</a>
-        <a href="cloze.php?id=<?= $navReportId ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'cloze.php' ? 'active' : '' ?>">✏️ Cloze</a>
-        <a href="boss.php?id=<?= $navReportId ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'boss.php' ? 'active' : '' ?>">⚔️ Boss</a>
-        <a href="dashboard.php?id=<?= $navReportId ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
+        <?php
+        $_quizHref  = $navReportId > 0 ? "quiz.php?id=$navReportId"      : 'index.php';
+        $_clozeHref = $navReportId > 0 ? "cloze.php?id=$navReportId"     : 'index.php';
+        $_bossHref  = $navReportId > 0 ? "boss.php?id=$navReportId"      : 'index.php';
+        $_dashHref  = $navReportId > 0 ? "dashboard.php?id=$navReportId" : 'dashboard.php';
+        ?>
+        <a href="<?= $_dashHref ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
             <img src="<?= $_AVATAR_BASE ?>home%20ikon.png" class="lp-nav-icon" alt=""> Dashboard
         </a>
-        <?php else: ?>
-        <a href="dashboard.php" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
-            <img src="<?= $_AVATAR_BASE ?>home%20ikon.png" class="lp-nav-icon" alt=""> Dashboard
-        </a>
-        <?php endif; ?>
+        <a href="<?= $_quizHref ?>"  class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'quiz.php'  ? 'active' : '' ?>">🎯 Quiz</a>
+        <a href="<?= $_clozeHref ?>" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'cloze.php' ? 'active' : '' ?>">✏️ Cloze</a>
+        <a href="<?= $_bossHref ?>"  class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'boss.php'  ? 'active' : '' ?>">⚔️ Boss</a>
         <a href="gamification.php" class="lp-nav-link lp-nav-icon-link <?= $currentPage === 'gamification.php' ? 'active' : '' ?>">
             <img src="<?= $_AVATAR_BASE ?>bagdes%20ikon.png" class="lp-nav-icon" alt=""> Badges
         </a>
