@@ -10,11 +10,12 @@ $currentPage = basename($_SERVER['PHP_SELF'] ?? '');
 $_navAvatar = $_SESSION['avatar'] ?? '';
 $_navAvatarUrl = '';
 if ($_navAvatar) {
-    // Avatar 1-10
     if (preg_match('/^avatar-(\d+)$/', $_navAvatar, $m) && (int)$m[1] >= 1 && (int)$m[1] <= 10) {
         $_navAvatarUrl = 'https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/Avatar%20' . $m[1] . '.png';
     }
 }
+$_navLoggedIn = !empty($_SESSION['user_id']);
+$_navUsername = htmlspecialchars($_SESSION['username'] ?? '');
 ?>
 <nav class="top-nav" aria-label="Hovednavigation">
     <a href="index.php" class="nav-brand">
@@ -34,7 +35,13 @@ if ($_navAvatar) {
             <?php if ($_navAvatarUrl): ?>
             <img id="navAvatarImg" src="<?= $_navAvatarUrl ?>" alt="Avatar" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);">
             <?php else: ?>🧑‍💻<?php endif; ?>
-            Profil
+            <?= $_navLoggedIn ? $_navUsername : 'Profil' ?>
         </a>
+        <?php if ($_navLoggedIn): ?>
+        <a href="logout.php" class="nav-link" style="color:var(--text-muted);">Log ud</a>
+        <?php else: ?>
+        <a href="login.php"    class="nav-link <?= $currentPage === 'login.php'    ? 'active' : '' ?>">Log ind</a>
+        <a href="register.php" class="nav-link" style="background:var(--primary);color:#fff;border-color:var(--primary);">Opret konto</a>
+        <?php endif; ?>
     </div>
 </nav>

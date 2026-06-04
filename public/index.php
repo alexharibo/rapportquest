@@ -361,8 +361,16 @@ if ($currentAvatar && preg_match('/^avatar-(\d+)$/', $currentAvatar, $m)) {
             <?php if ($navAvatarUrl): ?>
             <img src="<?= $navAvatarUrl ?>" class="lp-nav-avatar" alt="">
             <?php else: ?>🧑‍💻<?php endif; ?>
-            Profil
+            <?php if (!empty($_SESSION['user_id'])): ?>
+            <?= htmlspecialchars($_SESSION['username'] ?? 'Profil') ?>
+            <?php else: ?>Profil<?php endif; ?>
         </a>
+        <?php if (!empty($_SESSION['user_id'])): ?>
+        <a href="logout.php" class="lp-nav-link">Log ud</a>
+        <?php else: ?>
+        <a href="login.php"    class="lp-nav-link">Log ind</a>
+        <a href="register.php" class="lp-nav-cta" style="text-decoration:none;">Opret konto</a>
+        <?php endif; ?>
         <button class="lp-nav-cta" id="navUploadBtn">📤 Upload rapport</button>
     </div>
 </nav>
