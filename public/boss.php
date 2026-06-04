@@ -211,6 +211,7 @@ unset($q);
             padding: 2rem;
             text-align: center;
             display: none;
+            min-height: 100vh;
         }
         .results-bg {
             position: absolute; inset: 0;
