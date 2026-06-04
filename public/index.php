@@ -85,6 +85,9 @@ if ($currentAvatar && preg_match('/^avatar-(\d+)$/', $currentAvatar, $m)) {
             transition: all .15s;
         }
         .lp-nav-link:hover { color: #fff; background: rgba(124,58,237,.15); border-color: var(--border); }
+        .lp-nav-icon-link { display: inline-flex; align-items: center; gap: .4rem; }
+        .lp-nav-icon { width: 18px; height: 18px; object-fit: contain; filter: brightness(.7); transition: filter .15s; }
+        .lp-nav-icon-link:hover .lp-nav-icon { filter: brightness(1.3); }
         .lp-nav-cta {
             padding: .45rem 1.2rem; border-radius: 8px;
             background: var(--primary); color: #fff;
@@ -353,10 +356,15 @@ if ($currentAvatar && preg_match('/^avatar-(\d+)$/', $currentAvatar, $m)) {
         <img src="<?= $LOGO_URL ?>" alt="ExamQuest">
     </a>
     <div class="lp-nav-links">
-        <a href="#features"  class="lp-nav-link">Funktioner</a>
-        <a href="#how"       class="lp-nav-link">Sådan virker det</a>
-        <a href="dashboard.php" class="lp-nav-link">📊 Dashboard</a>
-        <a href="gamification.php" class="lp-nav-link">🏆 Badges</a>
+        <a href="dashboard.php" class="lp-nav-link lp-nav-icon-link">
+            <img src="<?= $AVATAR_BASE ?>home%20ikon.png" class="lp-nav-icon" alt=""> Dashboard
+        </a>
+        <a href="gamification.php" class="lp-nav-link lp-nav-icon-link">
+            <img src="<?= $AVATAR_BASE ?>bagdes%20ikon.png" class="lp-nav-icon" alt=""> Badges
+        </a>
+        <a href="dashboard.php?tab=stats" class="lp-nav-link lp-nav-icon-link">
+            <img src="<?= $AVATAR_BASE ?>Statistik%20ikon.png" class="lp-nav-icon" alt=""> Statistik
+        </a>
         <a href="profile.php" class="lp-nav-link" style="display:inline-flex;align-items:center;gap:.4rem;">
             <?php if ($navAvatarUrl): ?>
             <img src="<?= $navAvatarUrl ?>" class="lp-nav-avatar" alt="">
