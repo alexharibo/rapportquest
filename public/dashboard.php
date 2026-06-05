@@ -425,13 +425,13 @@ function examScoreLabel(int $score): string
         <h3>Start en aktivitet</h3>
         <div class="modes-grid">
             <a href="quiz.php?id=<?= $reportId ?>" class="mode-btn">
-                <span class="mode-btn-icon">🎯</span>Quiz
+                <span class="mode-btn-icon"><img src="https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/quiz%20ikon.png" style="width:48px;height:48px;object-fit:contain;"></span>Quiz
             </a>
             <a href="cloze.php?id=<?= $reportId ?>" class="mode-btn">
-                <span class="mode-btn-icon">✏️</span>Cloze
+                <span class="mode-btn-icon"><img src="https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/cloze%20mode%20ikon.png" style="width:48px;height:48px;object-fit:contain;"></span>Cloze
             </a>
             <a href="boss.php?id=<?= $reportId ?>" class="mode-btn">
-                <span class="mode-btn-icon">⚔️</span>Boss Battle
+                <span class="mode-btn-icon"><img src="https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/boss%20battle%20ikon.png" style="width:48px;height:48px;object-fit:contain;"></span>Boss Battle
             </a>
         </div>
     </div>
