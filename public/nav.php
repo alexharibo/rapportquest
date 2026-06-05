@@ -130,7 +130,7 @@ body { padding-top: 76px; }
 <script>
 (function(){
     // Konami code detector
-    const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    const KONAMI = ['1','2','3','4','5','6','7','8','9'];
     let kIdx = 0;
     document.addEventListener('keydown', e => {
         if (e.key === KONAMI[kIdx]) { kIdx++; if (kIdx === KONAMI.length) { kIdx = 0; snakeOpen(); } }
