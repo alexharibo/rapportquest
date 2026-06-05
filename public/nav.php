@@ -145,6 +145,32 @@ body { padding-top: 76px; }
     const scoreEl  = document.getElementById('snakeScore');
     const msgEl    = document.getElementById('snakeMsg');
 
+    // ── Audio (Web Audio API — no external deps) ──
+    let audioCtx;
+    function getAudio() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        return audioCtx;
+    }
+    function beep(freq, type, duration, vol = 0.18, startFreq = null) {
+        try {
+            const ac = getAudio();
+            const o = ac.createOscillator();
+            const g = ac.createGain();
+            o.connect(g); g.connect(ac.destination);
+            o.type = type;
+            o.frequency.setValueAtTime(startFreq || freq, ac.currentTime);
+            if (startFreq) o.frequency.exponentialRampToValueAtTime(freq, ac.currentTime + duration);
+            g.gain.setValueAtTime(vol, ac.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + duration);
+            o.start(ac.currentTime);
+            o.stop(ac.currentTime + duration);
+        } catch(e) {}
+    }
+    function sfxEat()     { beep(520, 'square', .07); setTimeout(() => beep(780, 'square', .07), 60); }
+    function sfxDie()     { beep(220, 'sawtooth', .12, .2, 440); setTimeout(() => beep(110, 'sawtooth', .3, .2, 220), 110); }
+    function sfxPause()   { beep(330, 'sine', .08); }
+    function sfxStart()   { [523,659,784].forEach((f,i) => setTimeout(() => beep(f,'square',.09,.12), i*80)); }
+
     function rand(n) { return Math.floor(Math.random() * n); }
 
     function placeFood() {
@@ -164,6 +190,7 @@ body { padding-top: 76px; }
         placeFood();
         clearInterval(loop);
         loop = setInterval(tick, 120);
+        sfxStart();
     }
 
     function tick() {
@@ -171,11 +198,11 @@ body { padding-top: 76px; }
         dir = nextDir;
         const head = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
         if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS || snake.some(s => s.x === head.x && s.y === head.y)) {
-            dead = true; msgEl.textContent = '💀 Game over! Tryk Restart.'; draw(); return;
+            dead = true; sfxDie(); msgEl.textContent = '💀 Game over! Tryk Restart.'; draw(); return;
         }
         snake.unshift(head);
         if (head.x === food.x && head.y === food.y) {
-            score += 10; scoreEl.textContent = 'Score: ' + score; placeFood();
+            score += 10; scoreEl.textContent = 'Score: ' + score; sfxEat(); placeFood();
         } else { snake.pop(); }
         draw();
     }
@@ -227,7 +254,7 @@ body { padding-top: 76px; }
             if (d.x !== -dir.x || d.y !== -dir.y) nextDir = d;
             e.preventDefault();
         }
-        if (e.key === 'p' || e.key === 'P') { paused = !paused; draw(); }
+        if (e.key === 'p' || e.key === 'P') { paused = !paused; sfxPause(); draw(); }
         if (e.key === 'Escape') snakeClose();
     });
 
