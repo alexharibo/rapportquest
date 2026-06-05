@@ -265,9 +265,9 @@ function examScoreLabel(int $score): string
         }
     </style>
 </head>
-<body>
+<body style="position:relative;">
 <img src="https://raw.githubusercontent.com/alexharibo/rapportquest/main/Visuel%20guides/Robot%20mascot.png"
-     style="position:fixed;bottom:0;right:-40px;height:75vh;width:auto;opacity:.13;pointer-events:none;z-index:-1;object-fit:contain;object-position:right bottom;">
+     style="position:absolute;bottom:0;right:0;height:75vh;width:auto;opacity:.13;pointer-events:none;z-index:-1;object-fit:contain;object-position:right bottom;">
 <?php include __DIR__ . '/nav.php'; ?>
 <div class="container">
 
